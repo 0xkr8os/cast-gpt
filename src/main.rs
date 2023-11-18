@@ -1,9 +1,9 @@
-use std::env;
 use alloy_primitives::Address;
 use anyhow::Result;
-use cast_gpt::settings::Settings;
 use cast_gpt::run;
+use cast_gpt::settings::Settings;
 use dotenv::dotenv;
+use std::env;
 
 /// The main entry point of the application.
 fn main() -> Result<()> {

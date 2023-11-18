@@ -14,6 +14,7 @@ Rust Starter aims to provide high quality components to bootstrap your Rust CLI 
 [dependencies]
 alloy-primitives = "0.4.2"
 anyhow = "1.0.75"
+async-openai = "0.16.3"
 config = "0.13.3"
 dotenv = "0.15.0"
 human-panic = "1.2.2"
