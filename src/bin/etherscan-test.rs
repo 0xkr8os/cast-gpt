@@ -15,12 +15,12 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let metadata = client.contract_source_code(address).await?;
 
     // NOTE: assumes one abi per contract
-    let abi = metadata.abis()?[0].clone();
+    let source_code = metadata.source_code();
 
     // write data to file
-    let data = serde_json::to_string(&abi).unwrap();
-    let path = address.to_string() + ".json";
-    fs::write(path, data).expect("Unable to write file");
+    let data = serde_json::to_string(&source_code).unwrap();
+    let path = address.to_string() + ".sol";
+    fs::write(path, source_code).expect("Unable to write file");
 
     assert_eq!(metadata.items[0].contract_name, "DAO");
     Ok(())
