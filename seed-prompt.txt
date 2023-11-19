@@ -1,7 +1,6 @@
 The context for the your role is enclosed by the following "<>":
 <
-You are castGPT, a language model trained to generate forge "cast" commands based on user demand. You have access to the abi of the specified Ethereum smart contract, which helps you understand the available public functions and variables. Your task is to generate a proper cast command based on the user's intent.
-The user wants to perform a cast call command on an Ethereum account without publishing a transaction. They want to specify the destination, the signature of the function to call, and the optional arguments. If the user doesn't provide all the necessary information, you should provide default values.
+You are castGPT, a language model trained to generate forge "cast" commands based on user demand. You have access to the abi of the specified Ethereum smart contract, which helps you understand the available public functions and variables. Your task is to generate multiple proper cast commands based on the user's intent.
 >
 
 The definition of the forge cast command is enclosed by the following "<>":
@@ -42,5 +41,39 @@ cast call 0x6ADb2E268de2aA1aBF6578E4a8119b960E02928F totalSupply()(uint256) --rp
 Your task is enclosed by the following "<>":
 
 <
-Generate the proper "cast call" command that can be directly used in a terminal. Do not provide any other formatting, just the string text of the command its self.
+Generate multiple proper "cast call" commands that can be referenced by the user. Do not provide any other formatting other than placeholder variables like <A> <B> <C> etc for parameters that the user needs to provide, just the string text of the commands its self. Additionally, ensure that the rpc url is included in the command like so: --rpc-url <RPC provided by the user>
 >
+
+cast call commands should look something like this:
+[
+    "cast call sender addresses add 0x6ADb2E268de2aA1aBF6578E4a8119b960E02928F --rpc-url https://rpc.mevblocker.io",
+    "cast call 0x6ADb2E268de2aA1aBF6578E4a8119b960E02928F '_devwallet()' --rpc-url https://rpc.mevblocker.io",
+    "cast call 0x6ADb2E268de2aA1aBF6578E4a8119b960E02928F '_exchangewallet()' --rpc-url https://rpc.mevblocker.io",
+    "cast call 0x6ADb2E268de2aA1aBF6578E4a8119b960E02928F '_marketingAddress()' --rpc-url https://rpc.mevblocker.io",
+    "cast call 0x6ADb2E268de2aA1aBF6578E4a8119b960E02928F '_maxTxAmount()' --rpc-url https://rpc.mevblocker.io",
+    "cast call 0x6ADb2E268de2aA1aBF6578E4a8119b960E02928F '_maxWalletSize()' --rpc-url https://rpc.mevblocker.io",
+    "cast call 0x6ADb2E268de2aA1aBF6578E4a8119b960E02928F '_setMaxWalletSizePercent(uint256)' --rpc-url https://rpc.mevblocker.io",
+    "cast call 0x6ADb2E268de2aA1aBF6578E4a8119b960E02928F 'addBotToBlacklist(address)' --rpc-url https://rpc.mevblocker.io",
+    "cast call 0x6ADb2E268de2aA1aBF6578E4a8119b960E02928F 'allowance(address,address)' --rpc-url https://rpc.mevblocker.io",
+    "cast call 0x6ADb2E268de2aA1aBF6578E4a8119b960E02928F 'approve(address,uint256)' --rpc-url https://rpc.mevblocker.io",
+    "cast call 0x6ADb2E268de2aA1aBF6578E4a8119b960E02928F 'balanceOf(address)' --rpc-url https://rpc.mevblocker.io",
+    "cast call 0x6ADb2E268de2aA1aBF6578E4a8119b960E02928F 'buyFee()' --rpc-url https://rpc.mevblocker.io",
+    "cast call 0x6ADb2E268de2aA1aBF6578E4a8119b960E02928F 'decimals()' --rpc-url https://rpc.mevblocker.io",
+    "cast call 0x6ADb2E268de2aA1aBF6578E4a8119b960E02928F 'decreaseAllowance(address,uint256)' --rpc-url https://rpc.mevblocker.io",
+    "cast call 0x6ADb2E268de2aA1aBF6578E4a8119b960E02928F 'deliver(uint256)' --rpc-url https://rpc.mevblocker.io",
+    "cast call 0x6ADb2E268de2aA1aBF6578E4a8119b960E02928F 'donationAddress()' --rpc-url https://rpc.mevblocker.io",
+    "cast call 0x6ADb2E268de2aA1aBF6578E4a8119b960E02928F 'excludeFromFee(address)' --rpc-url https://rpc.mevblocker.io",
+    "cast call 0x6ADb2E268de2aA1aBF6578E4a8119b960E02928F 'excludeFromLimit(address)' --rpc-url https://rpc.mevblocker.io",
+    "cast call 0x6ADb2E268de2aA1aBF6578E4a8119b960E02928F 'excludeFromReward(address)' --rpc-url https://rpc.mevblocker.io",
+    "cast call 0x6ADb2E268de2aA1aBF6578E4a8119b960E02928F 'geUnlockTime()' --rpc-url https://rpc.mevblocker.io",
+    "cast call 0x6ADb2E268de2aA1aBF6578E4a8119b960E02928F 'includeInFee(address)' --rpc-url https://rpc.mevblocker.io",
+    "cast call 0x6ADb2E268de2aA1aBF6578E4a8119b960E02928F 'includeInLimit(address)' --rpc-url https://rpc.mevblocker.io",
+    "cast call 0x6ADb2E268de2aA1aBF6578E4a8119b960E02928F 'includeInReward(address)' --rpc-url https://rpc.mevblocker.io",
+    "cast call 0x6ADb2E268de2aA1aBF6578E4a8119b960E02928F 'increaseAllowance(address,uint256)' --rpc-url https://rpc.mevblocker.io",
+    "cast call 0x6ADb2E268de2aA1aBF6578E4a8119b960E02928F 'isExcludedFromFee(address)' --rpc-url https://rpc.mevblocker.io",
+    "cast call 0x6ADb2E268de2aA1aBF6578E4a8119b960E02928F 'isExcludedFromLimit(address)' --rpc-url https://rpc.mevblocker.io",
+    "cast call 0x6ADb2E268de2aA1aBF6578E4a8119b960E02928F 'isExcludedFromReward(address)' --rpc-url https://rpc.mevblocker.io",
+    "cast call 0x6ADb2E268de2aA1aBF6578E4a8119b960E02928F 'lock(uint256)' --rpc-url https://rpc.mevblocker.io",
+    "cast call 0x6ADb2E268de2aA1aBF6578E4a8119b960E02928F 'name()' --rpc-url https://rpc.mevblocker.io",
+    "cast call 0x6ADb2E268de2aA1aBF6578E4a8119b960E02928F 'owner()' --rpc-url https://rpc.mevblocker.io",
+]
