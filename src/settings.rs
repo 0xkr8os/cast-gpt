@@ -4,8 +4,7 @@ use serde_derive::Deserialize;
 #[derive(Debug, Deserialize)]
 #[allow(unused)]
 pub struct Settings {
-    rpc_url: String,
-    chatgpt_api_key: String,
+    pub rpc_url: String,
 }
 
 impl Settings {

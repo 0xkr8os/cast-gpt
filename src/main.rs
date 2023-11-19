@@ -6,7 +6,8 @@ use dotenv::dotenv;
 use std::env;
 
 /// The main entry point of the application.
-fn main() -> Result<()> {
+#[tokio::main]
+async fn main() -> Result<()> {
     dotenv().ok();
     let settings = Settings::new()?;
 
@@ -18,7 +19,7 @@ fn main() -> Result<()> {
     let address = args[1].parse::<Address>().expect("Failed to parse address");
     let prompt = args[2].clone();
 
-    run(address, prompt, settings);
+    run(address, prompt, settings).await?;
 
     Ok(())
 }
